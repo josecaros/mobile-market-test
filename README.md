@@ -29,3 +29,20 @@ Inicia la comprobación de codigo, las reglas eslint estan definidas en: .eslint
 ### `REACT_APP_API_URL`
 Es la variable de la url base de consulta, en caso no se reconozca esta por defecto se tomara http://localhost:3001
 En caso esta api, este caida, la aplicación no podra mostrar correctamente las vistas
+
+## Tecnologias/Librerias utilizadas
+### `Tailwind 3`
+Framework de css, para manejar los estilos de la aplicación.
+
+### `Axios`
+Libreria para el manejo de peticiones HTTP REST.
+
+### `React Router Dom`
+Libreria para el manejo de rutas en react, para el lado del cliente.
+
+### `React Select`
+Componente Select de utilidad para el manejo de selectores
+
+### `React Query`
+Libreria para react que facilita las consultas a api's, el almacenamiento en cache y la sincronización con el backend.
+
