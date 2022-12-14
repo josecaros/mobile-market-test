@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const CameraDisplay = ({ primaryC, secondaryC }) => {
-  console.log('prim', (primaryC && primaryC != ''))
-  console.log('sec', (secondaryC && secondaryC != ""))
 
   if ((primaryC && primaryC !== '') || (secondaryC && secondaryC !== '')) {
     return (

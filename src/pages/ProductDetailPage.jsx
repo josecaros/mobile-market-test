@@ -1,24 +1,65 @@
+import { useEffect, useState, useRef, useContext } from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
 import Select from 'react-select'
-import { getProductItem } from '../api/Productos/RestProductos'
+import { getProductItem, addProductToCart } from '../api/Productos/RestProductos'
 import CameraDisplay from '../components/DetailsComponents/CameraDisplay'
 import FeatureDisplay from '../components/DetailsComponents/FeatureDisplay'
 import BreadCrum from '../components/utilities/BreadCrum'
+import { Toast } from 'primereact/toast';
+import { CartContext } from '../context/CartContext'
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
 const ProductDetailPage = () => {
   const { idProduct } = useParams();
   const { data: product, isLoading } = useQuery(['product', idProduct], () => getProductItem(idProduct))
 
-  if (isLoading) {
-    return (
-      <div>Cargando</div>
-    )
+  const [storage, setStorage] = useState();
+  const [color, setColor] = useState();
+
+  const [loadingAddCart, setLoadingAddCart] = useState(false);
+
+  const toast = useRef(null);
+
+  const { updateCartItems } = useContext(CartContext);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setStorage(product?.data[0].options.storage[0]);
+      setColor(product?.data[0].options.color[0])
+    }
+
+  }, [isLoading]);
+
+  const handleAddProductCart = async () => {
+    setLoadingAddCart(true)
+    const bodyRequest = {
+      id: product.data[0].id,
+      colorCode: color.code,
+      storageCode: storage.code
+    }
+    await delay(2000)
+    await addProductToCart(bodyRequest)
+      .then((succes) => {
+        console.log('Exito', succes.data)
+        updateCartItems(succes.data.count);
+        toast.current.show({ severity: 'success', summary: 'Operación exitosa', detail: 'Se añadio el producto al carrito', life: 2000 });
+      }
+      ).catch((err) => {
+        console.log('Fracaso', err.response.statusText)
+        toast.current.show({ severity: 'error', summary: 'Ocurrio un error', detail: 'Intentelo mas tarde', life: 2000 });
+      }
+      ).finally(
+        setLoadingAddCart(false)
+      )
+
   }
 
   return (
     <div>
-      <BreadCrum currentProduct={`${product?.data[0].brand} - ${product?.data[0].model}`}/>
+      <BreadCrum currentProduct={`${product?.data[0].brand} - ${product?.data[0].model}`} />
+      <Toast ref={toast} />
       <p className='text-4xl font-Aref font-bold'>Detalles de Producto - {product?.data[0].brand} - {product?.data[0].model} </p>
       <div className='grid grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1'>
         <div>
@@ -29,7 +70,7 @@ const ProductDetailPage = () => {
             <ul>
               <FeatureDisplay value={product?.data[0].brand} label={'Marca:'} />
               <FeatureDisplay value={product?.data[0].model} label={'Modelo:'} />
-              <FeatureDisplay value={product?.data[0].price} label={'Precio:'} />
+              <FeatureDisplay value={product?.data[0].price} label={'Precio:'} extra='$' />
               <FeatureDisplay value={product?.data[0].cpu} label={'CPU:'} />
               <FeatureDisplay value={product?.data[0].ram} label={'RAM:'} />
               <FeatureDisplay value={product?.data[0].so} label={'Sistema Operativo:'} />
@@ -45,16 +86,18 @@ const ProductDetailPage = () => {
             <div className='flex flex-wrap'>
               <Select
                 className='w-48 h-10 m-1'
-                defaultValue={product?.data[0].options.storage[0]}
+                value={storage}
                 options={product?.data[0].options.storage}
+                onChange={(selectOption) => setStorage(selectOption)}
                 getOptionLabel={(option) => option.name}
                 getOptionValue={(option) => option.code}
                 placeholder='Almacenamiento'
               />
               <Select
                 className='w-48 h-10 m-1 '
-                defaultValue={product?.data[0].options.color[0]}
+                value={color}
                 options={product?.data[0].options.color}
+                onChange={(selectOption) => setColor(selectOption)}
                 getOptionLabel={(option) => option.name}
                 getOptionValue={(option) => option.code}
                 placeholder='Colores'
@@ -62,8 +105,16 @@ const ProductDetailPage = () => {
             </div>
 
             <div className='flex flex-row-reverse'>
-              <button className='px-3 py-2 rounded-md bg-orange-500 text-gray-200'>
-                <span className='pi pi-cart-plus'></span> Añadir al carrito
+              <button disabled={loadingAddCart} onClick={() => {
+                handleAddProductCart();
+              }} className='px-3 py-2 w-40 text-sm md:text-base rounded-md bg-orange-500 text-gray-200 text-center'>
+                {
+                  loadingAddCart ?
+                    <span className='pi pi-spin pi-spinner'></span> :
+                    <>
+                      <span className='pi pi-cart-plus'></span> Añadir al carrito
+                    </>
+                }
               </button>
             </div>
           </div>

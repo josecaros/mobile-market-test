@@ -8,6 +8,7 @@ import ProductListPage from './pages/ProductListPage';
 import { Routes, Route } from 'react-router-dom';
 import ProductDetailPage from './pages/ProductDetailPage';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { CartContextProvider } from './context/CartContext'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,12 +23,14 @@ function App() {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-        <LayoutMenu>
-          <Routes>
-            <Route path='/' element={<ProductListPage />} />
-            <Route path='/detalle/:idProduct' element={<ProductDetailPage />} />
-          </Routes>
-        </LayoutMenu>
+        <CartContextProvider>
+          <LayoutMenu>
+            <Routes>
+              <Route path='/' element={<ProductListPage />} />
+              <Route path='/detalle/:idProduct' element={<ProductDetailPage />} />
+            </Routes>
+          </LayoutMenu>
+        </CartContextProvider>
       </QueryClientProvider>
     </div>
   );

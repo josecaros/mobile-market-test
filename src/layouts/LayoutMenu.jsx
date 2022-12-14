@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
 
 
 const TopMenuBar = (props) => {
+  const { cartItems } = useContext(CartContext);
 
   return (
     <>
@@ -20,7 +22,7 @@ const TopMenuBar = (props) => {
             <div className='flex'>
               <div className='m-4 relative w-10 h-10 flex justify-center items-center'>
                 <i className='pi pi-shopping-cart text-gray-200 p-2 hover:bg-sky-500 hover:text-blue-600 rounded-full ' style={{ fontSize: '1.8rem' }} />
-                <div className='absolute rounded-full w-5 h-5 top-0 right-0 bg-red-500 text-white flex items-center justify-center border border-gray-200 text-xs'>22</div>
+                <div className='absolute rounded-full w-5 h-5 top-0 right-0 bg-red-500 text-white flex items-center justify-center border border-gray-200 text-xs'>{cartItems}</div>
               </div>
             </div>
           </div>
