@@ -5,8 +5,13 @@ module.exports = {
     extend: {
       fontFamily: {
         'font-1': ['font-file-82132'],
-        'Bakery':['Bakery'],
-        'Aref':['"Aref Ruqaa Ink"']
+        'Bakery': ['Bakery'],
+        'Aref': ['"Aref Ruqaa Ink"']
+      },
+      colors: {
+        product:{
+          'button_add':'#ffd814'
+        }
       }
     },
   },

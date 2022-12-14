@@ -1,5 +1,4 @@
 import React from 'react'
-import BreadCrum from '../components/utilities/BreadCrum';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -25,9 +24,6 @@ const TopMenuBar = (props) => {
               </div>
             </div>
           </div>
-        </div>
-        <div className='ml-5 md:ml-14'>
-          <BreadCrum />
         </div>
       </div>
       <div className='mx-5 md:mx-14 xl:mx-32'>

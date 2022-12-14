@@ -7,15 +7,28 @@ import 'primeicons/primeicons.css';                                //icons
 import ProductListPage from './pages/ProductListPage';
 import { Routes, Route } from 'react-router-dom';
 import ProductDetailPage from './pages/ProductDetailPage';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchInterval: 3600000, //Tiempo de revalidación de datos
+      cacheTime: 3600000
+    }
+  }
+});
+
 function App() {
   return (
     <div>
-      <LayoutMenu>
-        <Routes>
-          <Route path='/' element={<ProductListPage />} />
-          <Route path='/detalle' element={<ProductDetailPage />} />
-        </Routes>
-      </LayoutMenu>
+      <QueryClientProvider client={queryClient}>
+        <LayoutMenu>
+          <Routes>
+            <Route path='/' element={<ProductListPage />} />
+            <Route path='/detalle/:idProduct' element={<ProductDetailPage />} />
+          </Routes>
+        </LayoutMenu>
+      </QueryClientProvider>
     </div>
   );
 }
