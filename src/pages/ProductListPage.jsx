@@ -28,7 +28,15 @@ const ProductListPage = () => {
         <div className='mt-5'>
           <div className='grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 grid-flow-row gap-2'>
             {
-              products?.data?.map((item) => {
+              products?.data?.filter((item) => {
+                let brand = `${item.brand.toLowerCase()}`
+                let model = `${item.model.toLowerCase()}`
+
+                if (searchTerm == '')
+                  return item
+                else if (brand.includes(searchTerm?.toLowerCase()) || model.includes(searchTerm?.toLowerCase()))
+                  return item
+              }).map((item) => {
                 return (
                   <Link key={item.id} to={`/detalle/${item.id}`}
                     className='w-40 sm:w-56 md:w-60 xl:w-80  h-48 sm:h-60 md:h-60 xl:h-96 transform hover:scale-105 duration-200'>
@@ -45,6 +53,7 @@ const ProductListPage = () => {
                   </Link>
                 )
               })
+
             }
           </div>
         </div>
