@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useContext } from 'react'
 import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Select from 'react-select'
 import { getProductItem, addProductToCart } from '../api/Productos/RestProductos'
 import CameraDisplay from '../components/DetailsComponents/CameraDisplay'
@@ -60,7 +60,12 @@ const ProductDetailPage = () => {
     <div>
       <BreadCrum currentProduct={`${product?.data[0].brand} - ${product?.data[0].model}`} />
       <Toast ref={toast} />
-      <p className='text-4xl font-Aref font-bold'>Detalles de Producto - {product?.data[0].brand} - {product?.data[0].model} </p>
+      <Link to={'/'} className='text-sky-600 hover:bg-sky-600 hover:text-white p-2 rounded-md'>
+        <span className=''><i className='pi pi-chevron-left'></i> Atras</span>
+      </Link>
+      <p className='text-4xl font-Aref font-bold'>
+        Detalles de Producto - {product?.data[0].brand} - {product?.data[0].model}
+      </p>
       <div className='grid grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1'>
         <div>
           <img src='/img/iphone.png' alt='Celular' className='w-auto h-[80vh] mx-auto' />
