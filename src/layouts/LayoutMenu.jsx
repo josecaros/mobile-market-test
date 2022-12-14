@@ -13,10 +13,10 @@ const TopMenuBar = (props) => {
         <div>
           <div className='flex justify-between m-0 w-full bg-gradient-to-r from-cyan-50 to-blue-600'>
             <Link to='/' className='flex min-w-fit'>
-              <img src='/img/LogoPNG.png' className='w-20 h-14 m-2' />
+              <img src='/img/LogoPNG.png' className='w-20 xl:w-32 xl:h-20 h-14 m-2' />
               <div className='flex flex-col items-center'>
-                <h1 className='text-5xl font-Aref text-sky-500 '>Cel-Shop</h1>
-                <span className='font-Aref text-sm text-gray-600'>Venta de telefonos celulares</span>
+                <h1 className='text-5xl xl:text-7xl font-Aref text-sky-500 '>Cel-Shop</h1>
+                <span className='font-Aref text-sm xl:text-lg text-gray-600'>Venta de telefonos celulares</span>
               </div>
             </Link>
             <div className='flex'>
