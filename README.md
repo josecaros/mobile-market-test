@@ -25,3 +25,7 @@ Revise el siguiente enlace [deployment](https://facebook.github.io/create-react-
 ### `npm run lint`
 Inicia la comprobación de codigo, las reglas eslint estan definidas en: .eslintrc.json.\
 
+## Variables de Entorno en .env
+### `REACT_APP_API_URL`
+Es la variable de la url base de consulta, en caso no se reconozca esta por defecto se tomara http://localhost:3001
+En caso esta api, este caida, la aplicación no podra mostrar correctamente las vistas
