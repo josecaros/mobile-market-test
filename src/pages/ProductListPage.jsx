@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { InputText } from 'primereact/inputtext';
+import { Link } from 'react-router-dom';
 
 const items = [
   {
@@ -71,7 +72,8 @@ const ProductListPage = () => {
           {
             items.map((items) => {
               return (
-                <div key={items.id} className='w-40 h-40 sm:w-56 sm:h-52 md:w-60 md:h-52 xl:w-80 xl:h-72 transform hover:scale-105 duration-200 cursor-pointer'>
+                <Link key={items.id} to={'/detalle'}
+                  className='w-40 sm:w-56 md:w-60 xl:w-80  h-48 sm:h-60 md:h-60 xl:h-96 transform hover:scale-105 duration-200'>
                   <div className='h-4/6'>
                     <img src='/img/iphone.png' className='h-full w-auto mx-auto' />
                   </div>
@@ -82,7 +84,7 @@ const ProductListPage = () => {
                     </div>
                     <div className='mx-auto justify-start text-yellow-700 font-Aref min-w-fit font-bold text-xl'>$1236.6</div>
                   </div>
-                </div>
+                </Link>
               )
             })
           }
