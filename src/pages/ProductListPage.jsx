@@ -5,18 +5,18 @@ import BreadCrum from '../components/utilities/BreadCrum';
 import { getProductList } from '../api/Productos/RestProductos';
 import { useQuery } from 'react-query';
 
+export const evaluarOcurrenciasIgnoreCase = (primerPatron, segundoPatron, patronDeComparacion) => {
+  let primero = `${primerPatron.toLowerCase()}`
+  let segundo = `${segundoPatron.toLowerCase()}`
+  return primero.includes(patronDeComparacion?.toLowerCase()) || segundo.includes(patronDeComparacion?.toLowerCase())
+}
+
 const ProductListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { data: products } = useQuery(['products'], getProductList)
 
-  const evaluarPatron = (item) => {
-    let brand = `${item.brand.toLowerCase()}`
-    let model = `${item.model.toLowerCase()}`
-    return brand.includes(searchTerm?.toLowerCase()) || model.includes(searchTerm?.toLowerCase())
-  }
-
   return (
-    <>
+    <div>
       <BreadCrum />
       <div className='mt-4'>
         <div>
@@ -37,7 +37,7 @@ const ProductListPage = () => {
               products?.data?.filter((item) => {
                 if (searchTerm == '')
                   return item
-                else if (evaluarPatron(item))
+                else if (evaluarOcurrenciasIgnoreCase(item.brand, item.model, searchTerm))
                   return item
               }).map((item) => {
                 return (
@@ -61,7 +61,7 @@ const ProductListPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -9,8 +9,6 @@ import BreadCrum from '../components/utilities/BreadCrum'
 import { Toast } from 'primereact/toast';
 import { CartContext } from '../context/CartContext'
 
-const delay = ms => new Promise(res => setTimeout(res, ms));
-
 const ProductDetailPage = () => {
   const { idProduct } = useParams();
   const { data: product, isLoading } = useQuery(['product', idProduct], () => getProductItem(idProduct))
@@ -39,7 +37,6 @@ const ProductDetailPage = () => {
       colorCode: color.code,
       storageCode: storage.code
     }
-    await delay(2000)
     await addProductToCart(bodyRequest)
       .then((succes) => {
         console.log('Exito', succes.data)
