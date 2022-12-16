@@ -46,3 +46,7 @@ Componente Select de utilidad para el manejo de selectores
 ### `React Query`
 Libreria para react que facilita las consultas a api's, el almacenamiento en cache y la sincronización con el backend.
 
+## Mock API
+### `npm run start`
+Navegar desde el directorio root hacia la carpeta server y ejecutar npm run start, para iniciar el servidor api mock.
+
