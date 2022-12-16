@@ -114,7 +114,7 @@ const ProductDetailPage = () => {
                   loadingAddCart ?
                     <span className='pi pi-spin pi-spinner'></span> :
                     <>
-                      <span className='pi pi-cart-plus'></span> Añadir al carrito
+                      <span className=''> <i className='pi pi-cart-plus'></i>Añadir al carrito</span>
                     </>
                 }
               </button>
