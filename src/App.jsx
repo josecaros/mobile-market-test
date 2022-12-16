@@ -4,11 +4,13 @@ import './styles/fonts.css'
 import 'primereact/resources/themes/lara-light-indigo/theme.css';  //theme
 import 'primereact/resources/primereact.min.css';                  //core css
 import 'primeicons/primeicons.css';                                //icons
+import './styles/errorPage.css'
 import ProductListPage from './pages/ProductListPage';
 import { Routes, Route } from 'react-router-dom';
 import ProductDetailPage from './pages/ProductDetailPage';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { CartContextProvider } from './context/CartContext'
+import Error404 from './pages/Error404';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,11 +30,12 @@ function App() {
             <Routes>
               <Route path='/' element={<ProductListPage />} />
               <Route path='/detalle/:idProduct' element={<ProductDetailPage />} />
+              <Route path='*' element={<Error404 />} />
             </Routes>
           </LayoutMenu>
         </CartContextProvider>
       </QueryClientProvider>
-    </div>
+    </div >
   );
 }
 

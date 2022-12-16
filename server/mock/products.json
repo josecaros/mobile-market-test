@@ -1,0 +1,130 @@
+[
+  {
+    "id": "1",
+    "imgUrl": "",
+    "brand": "Acer",
+    "model": "Liquid 1",
+    "price": "16",
+    "cpu": "",
+    "ram": "",
+    "so": "",
+    "displayResolution": "",
+    "battery": "",
+    "dimentions": "",
+    "weight": "",
+    "primaryCamera": ["Samsung 10Mp", "CMOS Sony 2Mp"],
+    "secondaryCmera": "Samsung 10Mp",
+    "options": {
+      "color": [
+        {
+          "code": "1",
+          "name": "black"
+        }
+      ],
+      "storage": [
+        {
+          "code": "1",
+          "name": "16GB"
+        }
+      ]
+    }
+  },
+  {
+    "id": "2",
+    "imgUrl": "",
+    "brand": "Acer",
+    "model": "Liquid 1",
+    "price": "16",
+    "cpu": "",
+    "ram": "",
+    "so": "",
+    "displayResolution": "",
+    "battery": "",
+    "dimentions": "",
+    "weight": "",
+    "primaryCamera": "Samsung 10Mp",
+    "secondaryCmera": ["Samsung 10Mp", "CMOS Sony 2Mp"],
+    "options": {
+      "color": [
+        {
+          "code": "1",
+          "name": "black"
+        }
+      ],
+      "storage": [
+        {
+          "code": "1",
+          "name": "16GB"
+        }
+      ]
+    }
+  },
+  {
+    "id": "3",
+    "imgUrl": "",
+    "brand": "Acer",
+    "model": "Liquid 3",
+    "price": "16",
+    "cpu": "1.5 Ghz Mediatek Helio g96",
+    "ram": "4GB",
+    "so": "Android",
+    "displayResolution": "",
+    "battery": "",
+    "dimentions": "25X25",
+    "weight": "250g",
+    "primaryCamera": ["Samsung 10Mp", "CMOS Sony 2Mp"],
+    "secondaryCmera": ["Samsung 10Mp", "CMOS Sony 2Mp"],
+    "options": {
+      "color": [
+        {
+          "code": "1",
+          "name": "black"
+        }
+      ],
+      "storage": [
+        {
+          "code": "1",
+          "name": "16GB"
+        },
+        {
+            "code": "2",
+            "name": "32GB"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4",
+    "imgUrl": "",
+    "brand": "Acer",
+    "model": "Liquid 4",
+    "price": "16",
+    "cpu": "",
+    "ram": "",
+    "so": "",
+    "displayResolution": "",
+    "battery": "",
+    "dimentions": "",
+    "weight": "",
+    "primaryCamera": "",
+    "secondaryCmera": "",
+    "options": {
+      "color": [
+        {
+          "code": "1",
+          "name": "white"
+        },
+        {
+            "code": "2",
+            "name": "black"
+        }
+      ],
+      "storage": [
+        {
+          "code": "1",
+          "name": "16GB"
+        }
+      ]
+    }
+  }
+]

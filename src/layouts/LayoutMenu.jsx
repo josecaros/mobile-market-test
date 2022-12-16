@@ -8,7 +8,7 @@ const TopMenuBar = (props) => {
   const { cartItems } = useContext(CartContext);
 
   return (
-    <>
+    <div>
       <div>
         <div>
           <div className='flex justify-between m-0 w-full bg-gradient-to-r from-cyan-50 to-blue-600'>
@@ -31,7 +31,7 @@ const TopMenuBar = (props) => {
       <div className='mx-5 md:mx-14 xl:mx-32'>
         {props.children}
       </div>
-    </>
+    </div>
   )
 }
 
