@@ -9,6 +9,12 @@ const ProductListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { data: products } = useQuery(['products'], getProductList)
 
+  const evaluarPatron = (item) => {
+    let brand = `${item.brand.toLowerCase()}`
+    let model = `${item.model.toLowerCase()}`
+    return brand.includes(searchTerm?.toLowerCase()) || model.includes(searchTerm?.toLowerCase())
+  }
+
   return (
     <>
       <BreadCrum />
@@ -29,12 +35,9 @@ const ProductListPage = () => {
           <div className='grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 grid-flow-row gap-2'>
             {
               products?.data?.filter((item) => {
-                let brand = `${item.brand.toLowerCase()}`
-                let model = `${item.model.toLowerCase()}`
-
                 if (searchTerm == '')
                   return item
-                else if (brand.includes(searchTerm?.toLowerCase()) || model.includes(searchTerm?.toLowerCase()))
+                else if (evaluarPatron(item))
                   return item
               }).map((item) => {
                 return (
